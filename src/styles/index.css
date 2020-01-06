@@ -1,10 +1,9 @@
 html {
     background-color: #ffffff;
-    overflow: hidden;
 }
 
 body {
-    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-family: 'Overpass', sans-serif;
     margin: 0;
     padding: 0;
     font-size: 14px;
@@ -14,7 +13,6 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    overflow: auto;
 }
 
 input,
@@ -22,7 +20,7 @@ textarea,
 button,
 select,
 a {
-    font-family: 's', sans-serif !important;
+    font-family: 'Overpass', sans-serif !important;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     outline: none !important;
 }
@@ -57,22 +55,91 @@ span {
     vertical-align: middle;
 }
 
-#root {
-    min-height: 100vh;
-}
-
-#root,
-#root>.container {
+#container{
     display: flex;
     align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    transition: opacity 1s ease;
 }
 
-.container canvas,
-.container img {
+.column {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
     width: 480px;
     height: 320px;
 }
 
-h6 {
-    font-size: 20px !important
+#draw , #demo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+input {
+    position: absolute;
+    background: #141415;
+    border: none;
+    width: calc(100% - 84px);
+    font-weight: bold;
+    letter-spacing: -0.5px;
+    padding: 3px 4px 1px 4px;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+#request {
+    top: 96px;
+    left: 42px;
+    color: #fefefc;
+    font-size: 16px;
+}
+
+#response {
+    top: 126px;
+    left: 42px;
+    color: #b1b0b1;
+}
+
+h2 {
+    text-align: left;
+    padding: 0 40px;
+    margin: 0;
+}
+
+.small {
+    font-size: 10px;
+    vertical-align: baseline;
+}
+
+button {
+    position: absolute;
+    left: 35%;
+    bottom: 0;
+    width: 30%;
+    height: 36px;
+    border-radius: 50px;
+    padding: 1px 0 0 0;
+    box-sizing: border-box;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+button:hover {
+    border-radius: 10px;
+}
+
+#png {
+    border: solid 1px #f97659;
+    background: #fe795c;
+}
+
+#gif {
+    border: solid 1px #369e88;
+    background: #45bea4;
 }

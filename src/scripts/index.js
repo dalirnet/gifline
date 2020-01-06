@@ -1,4 +1,8 @@
 const action = {
+    default: {
+        request: "npm install gifline --save-dev",
+        response: "Command Line to Gif as Simple"
+    },
     config: {
         repeat: 0,
         width: 480,
@@ -7,15 +11,25 @@ const action = {
         workers: 3,
         quality: 10,
         workerScript: "scripts/gif.worker.js",
-        font: "Open Sans",
+        font: "Overpass",
         header: "GifLine",
-        request: "npm install gifline --save-dev",
-        response: "Command Line to Gif as Simple"
+        request: "",
+        response: ""
     },
-    render() {
+    render(request = "", response = "") {
+        if (request.length) {
+            this.config.request = request;
+        } else {
+            this.config.request = action.default.request;
+        }
+        if (response.length) {
+            this.config.response = response;
+        }
+        else {
+            this.config.response = action.default.response;
+        }
         let gifInstance = new GIF(this.config);
-        let canvas = document.createElement("CANVAS");
-        canvas = document.getElementById("draw");
+        let canvas = document.getElementById("draw");
         canvas.width = this.config.width;
         canvas.height = this.config.height;
         let context = canvas.getContext("2d");
@@ -94,11 +108,11 @@ const action = {
             context.font = "15px '" + this.config.font + "'";
             context.fillStyle = "#fefefc";
             context.fillText(char, this.config.offset * 3, (this.config.offset * 5) + 58);
-            gifInstance.addFrame(canvas, { copy: true, delay: 100 });
+            gifInstance.addFrame(canvas, { copy: true, delay: 120 });
             if (i < this.config.request.length) {
                 let space = context.measureText(char).width;
                 context.fillText("_", (this.config.offset * 3) + context.measureText(char).width, (this.config.offset * 5) + 58);
-                gifInstance.addFrame(canvas, { copy: true, delay: 100 });
+                gifInstance.addFrame(canvas, { copy: true, delay: 80 });
             }
         }
         //
@@ -117,13 +131,31 @@ const action = {
         gifInstance.render();
     }
 };
-$(document).ready(() => {
-    WebFont.load({
-        google: {
-            families: [action.config.font]
-        },
-        active() {
-            action.render();
-        }
-    });
+WebFont.load({
+    google: {
+        families: [action.config.font]
+    },
+    active() {
+        document.getElementById("container").style.opacity = 1;
+        action.render();
+        document.getElementById("request").addEventListener("change", (e) => {
+            action.render(e.target.value, document.getElementById("response").value);
+        });
+        document.getElementById("response").addEventListener("change", (e) => {
+            action.render(document.getElementById("request").value, e.target.value);
+        });
+        //
+        document.getElementById("png").addEventListener("click", (e) => {
+            let link = document.createElement("A");
+            link.download = "gifline.png";
+            link.href = document.getElementById("draw").toDataURL("image/png").replace("image/png", "image/octet-stream");
+            link.click();
+        });
+        document.getElementById("gif").addEventListener("click", (e) => {
+            let link = document.createElement("A");
+            link.download = "gifline.gif";
+            link.href = document.getElementById("demo").src;
+            link.click();
+        });
+    }
 });
