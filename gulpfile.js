@@ -29,14 +29,25 @@ gulp.task('html', function () {
 });
 
 gulp.task('copy', function () {
-    return gulp.src(['src/manifest.json', 'src/browserconfig.xml'])
+    return gulp.src([
+        'src/manifest.json',
+        'src/browserconfig.xml'
+    ])
         .pipe(gulp.dest('build'));
+});
+
+gulp.task('copy-js', function () {
+    return gulp.src([
+        'src/scripts/gif.js',
+        'src/scripts/gif.worker.js'
+    ])
+        .pipe(gulp.dest('build/scripts'));
 });
 
 gulp.task('css', function () {
     return gulp.src([
-            'src/styles/*.css',
-        ])
+        'src/styles/*.css',
+    ])
         .pipe(concatCss('bundle.css'))
         .pipe(cleanCSS({
             level: {
@@ -60,8 +71,8 @@ gulp.task('js-debug', function () {
 
 gulp.task('js', function () {
     return gulp.src('src/scripts/index.js', {
-            sourcemaps: false
-        })
+        sourcemaps: false
+    })
         .pipe(browserify())
         .pipe(babel({
             presets: ['@babel/env'],
@@ -93,5 +104,5 @@ gulp.task('watch', function () {
 })
 
 
-gulp.task('all', gulp.parallel('html', 'copy', 'css', 'js', 'img'));
+gulp.task('all', gulp.parallel('html', 'copy', 'copy-js', 'css', 'js', 'img'));
 gulp.task('default', gulp.parallel('html', 'css', 'js-debug', 'watch'));

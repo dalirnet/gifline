@@ -1,28 +1,28 @@
 html {
-    background-color: #fafafa;
+    background-color: #ffffff;
+    overflow: hidden;
 }
 
 body {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Barlow Semi Condensed', sans-serif;
     margin: 0;
     padding: 0;
     font-size: 14px;
     text-align: center;
-    direction: rtl;
     line-height: 32px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    overflow: auto;
 }
 
 input,
 textarea,
 button,
 select,
-a,
-.iziToast-body {
-    font-family: 'Share Tech Mono', monospace !important;
+a {
+    font-family: 's', sans-serif !important;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     outline: none !important;
 }
@@ -55,4 +55,24 @@ p,
 span {
     margin: 0;
     vertical-align: middle;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+#root,
+#root>.container {
+    display: flex;
+    align-items: center;
+}
+
+.container canvas,
+.container img {
+    width: 480px;
+    height: 320px;
+}
+
+h6 {
+    font-size: 20px !important
 }

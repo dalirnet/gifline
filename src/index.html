@@ -23,21 +23,30 @@
     <meta name="msapplication-TileImage" content="images/icon/ms-icon-144x144.png">
     <meta name="theme-color" content="#0277bd">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="styles/bundle.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script src="scripts/gif.js"></script>
 </head>
 
 <body>
     <div id="root">
-        <div class="container" style="min-height: 50vh;">
-            <h2 class="title ltr" style="margin: 50px;line-height: 50px;">
-
-            </h2>
-            <hr>
+        <div class="container">
+            <div class="columns">
+                <div class="column is-6" style="min-width: 640px;min-height: 460px;">
+                    <h6 class="title">Command Line</h6>
+                    <canvas id="draw" width="640" height="420"></canvas>
+                </div>
+                <div class="column is-6" style="min-width: 640px;min-height: 460px;">
+                    <h6 class="title">Gif Line</h6>
+                    <img id="demo"
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
+                </div>
+            </div>
         </div>
-        <script src="scripts/bundle.js"></script>
+    </div>
+    <script src="scripts/bundle.js"></script>
 </body>
 
 </html>
