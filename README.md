@@ -6,4 +6,6 @@
 
 <p align="center">
   <img width="480" height="320" src="https://raw.githubusercontent.com/dalirnet/gifline/master/build/images/demo.gif">
+  <br>
+  <a href="https://dalirnet.github.io/gifline/build/index.html">Command line to Gif like a piece of cake</a>
 </p>
