@@ -1,7 +1,7 @@
 const action = {
     default: {
         request: "npm install gifline --save-dev",
-        response: "Command Line to Gif as Simple"
+        response: "Command line to Gif like a piece of cake"
     },
     config: {
         repeat: 0,
