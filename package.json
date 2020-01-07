@@ -1,7 +1,7 @@
 {
   "name": "gifline",
   "version": "1.0.0",
-  "description": "Command Line to Gif as Simple",
+  "description": "Command line to Gif like piece of cake",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
